@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOHN MARK WEBSITE</title>
+    <style>
+        body {
+            background-color: #ffe6e6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #4d2c2c;
+            margin: 0;
+            padding: 10px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffcccc;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        h4, h2, h3 {
+            margin: 10px 0;
+        }
+
+        section {
+            background-color: #fff0f5;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 90%;
+            margin: auto;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #996666;
+            font-size: 0.9em;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        input, textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+            width: 100%;
+        }
+
+        button {
+            background-color: #ff9999;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff6666;
+        }
+
+        #success-message {
+            display: none;
+            color: green;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        @media (min-width: 600px) {
+            section {
+                max-width: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h4>JOHN MARK V DURAN MAIN WEBSITE</h4>
+        <h4>LORAINE ASHLEY C MIRRALES</h4>
+    </header>
+
+    <section>
+        <h2>About Us</h2>
+        <p>Welcome to our special space where we share memories, smiles, and sweet moments. ❤️ ILOVEYOU</p>
+
+        <h2>Her</h2>
+        <h3>Galit ka Kasi lage tssk</h3>
+
+        <h2>Send a Message</h2>
+        <form action="https://formspree.io/f/meoaklpg" method="POST" id="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="_replyto" placeholder="Your Email" required>
+            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+            <div id="success-message">Thank you! Your message has been sent. 💌</div>
+        </form>
+    </section>
+
+    <footer>
+        Made with love by John Mark to Loraine Ashley
+    </footer>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            try {
+                await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                form.reset();
+                successMessage.style.display = 'block';
+            } catch (error) {
+                alert('Oops! Something went wrong.');
+            }
+        });
+    </script>
+
+</body>
+</html>
